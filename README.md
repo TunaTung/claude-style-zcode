@@ -24,6 +24,10 @@
 - [Dream Work Theme](https://github.com/xxxhh336/dream-work-theme)（CDP 注入换肤工具，Apache-2.0）
 - ZCode 桌面端，且已在 ZCode「设置 → 外观」切换到浅色模式
 
+> ⚠️ **本主题需要 generic 应用的 `theme.css` 注入能力**（输入框圆角、消息透明、侧边栏指示条、背景图透出）。上游原版对 ZCode 这类 generic 应用只注入自动生成的通用兜底皮肤，**不读取 `theme.css`**——直接用上游原版只能得到基础四色配色，没有组件级样式。
+>
+> 上游补丁见 [xxxhh336/dream-work-theme#1](https://github.com/xxxhh336/dream-work-theme/pull/1)（open，未合并）。**在补丁合并前，请使用下方「方式 A」的打包版，或「方式 B」的 fork 分支。**
+
 ## 安装
 
 > 主题放进 Dream Work Theme 的**用户主题目录**即可被识别。主题目录不会自动创建，需要手动新建 `themes` 文件夹。各平台位置见下表：
@@ -62,16 +66,36 @@
 
 ### 第三步：启动注入
 
+**方式 A（推荐，Windows）：下载 fork 打包版**
+
+从 [TunaTung/dream-work-theme Releases](https://github.com/TunaTung/dream-work-theme/releases) 下载最新的 `Dream-Work-Theme-*-win-x64.exe`（已内置 generic 应用 `theme.css` 注入补丁），安装后：
+
+1. 启动 Dream Work Theme
+2. 选择 ZCode
+3. 选择主题 `claude-eva-official`（明日香版）或 `claude-eva-official-clean`（纯净版）
+4. 点击「应用主题」
+
+> fork 的 Release 会自动跟随上游同步并叠加本补丁；`theme.css` 生效后，输入框圆角、消息透明、侧边栏指示条均可见。
+
+**方式 B（开发者 / 其他平台）：clone fork 分支运行源码**
+
+```bash
+git clone --branch feat/generic-theme-css-injection https://github.com/TunaTung/dream-work-theme
+cd dream-work-theme
+pnpm install
+```
+
+然后启动注入：
+
 ```bash
 # 明日香版
-cd <dream-work-theme 项目目录>
 npx electron . --launch=zcode:claude-eva-official
 
 # 纯净版
 npx electron . --launch=zcode:claude-eva-official-clean
 ```
 
-> 本主题为 ZCode（generic-work 应用）提供了精细的组件级样式（输入框圆角、消息透明、侧边栏指示条等），需要 Dream Work Theme 支持 generic 应用的 `theme.css` 注入（见下方「上游说明」）。
+> 本主题为 ZCode（generic-work 应用）提供了精细的组件级样式（输入框圆角、消息透明、侧边栏指示条等），需要 Dream Work Theme 支持 generic 应用的 `theme.css` 注入（见上方「依赖」与「上游说明」）。
 
 ## 文件结构
 
@@ -119,6 +143,7 @@ npx electron . --launch=zcode:claude-eva-official-clean
 
 - 本项目基于 [Dream Work Theme](https://github.com/xxxhh336/dream-work-theme)（Apache-2.0）开发，主题格式与代码参考其通用写法（`themes/<id>/theme.json` + `theme.css` + hero）。
 - ZCode 属于 generic-work 应用：Dream Work Theme 原版对 generic 应用只注入自动生成的通用兜底皮肤，不读取 `theme.css`。本主题的组件级样式需要上游支持 generic 应用的 `theme.css` 注入，对应的上游补丁见 [PR 链接](https://github.com/xxxhh336/dream-work-theme/pull/1)（`readThemeCss` / blob 修复 / 注入后自动退出）。
+- **补丁尚未被上游合并**：合并前，Windows 用户请使用 [TunaTung/dream-work-theme](https://github.com/TunaTung/dream-work-theme) 的 Release 打包版（自动同步上游 + 叠加补丁）；其他平台或开发者可 clone 其 `feat/generic-theme-css-injection` 分支。上游合并后本主题将完全兼容官方原版。
 
 ## 许可
 
