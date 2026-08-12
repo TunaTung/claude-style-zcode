@@ -29,7 +29,7 @@ header {
   transition: background-color 180ms ease !important;
 }
 
-/* ---- 侧边栏:暖白毛玻璃(女孩图透出 45%),珊瑚右缘 ----
+/* ---- 侧边栏:暖白毛玻璃(明日香图透出 45%),珊瑚右缘 ----
    注意:通用兜底用 :is(#sidebar, aside) 的 id 特异性,主题
    必须用 #sidebar 同级选择器并在后注入才能覆盖。 */
 #sidebar {

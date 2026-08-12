@@ -6,10 +6,10 @@
 
 | 版本 | 目录 | 特点 |
 | --- | --- | --- |
-| **Claude Eva Official**（女孩版） | 根目录 | 动漫少女背景 + 透明消息，氛围感强 |
+| **Claude Eva Official**（明日香版） | 根目录 | 动漫少女背景 + 透明消息，氛围感强 |
 | **Claude Eva Clean**（纯净版） | `clean/` | 细腻暖色渐变背景 + 透明消息，更克制 |
 
-![女孩版实际界面预览](docs/preview.png)
+![明日香版实际界面预览](docs/preview.png)
 
 > 预览图为真实 ZCode 界面截图（浅色模式），仅作展示。
 
@@ -20,7 +20,7 @@
 
 ## 安装
 
-### 女孩版（根目录）
+### 明日香版（根目录）
 
 1. 克隆本仓库（或只下载 `theme.json`、`theme.css`、`hero.webp` 三个文件，不要套多余目录）。
 2. 放入 Dream Work Theme 的主题目录：
@@ -53,9 +53,9 @@ npx electron . --launch=zcode:claude-eva-official-clean
 
 ```
 .
-├── theme.json       # 女孩版主题声明（Claude 色系 palette）
-├── theme.css        # 女孩版组件级样式（composer / message / sidebar / 微交互）
-├── hero.webp        # 女孩版背景图（动漫少女，2848×1600）
+├── theme.json       # 明日香版主题声明（Claude 色系 palette）
+├── theme.css        # 明日香版组件级样式（composer / message / sidebar / 微交互）
+├── hero.webp        # 明日香版背景图（动漫少女，2848×1600）
 ├── clean/           # 纯净版（渐变背景）
 │   ├── theme.json
 │   ├── theme.css
@@ -65,7 +65,7 @@ npx electron . --launch=zcode:claude-eva-official-clean
 
 ## 主题信息
 
-- `id`：`claude-eva-official`（女孩版）/ `claude-eva-official-clean`（纯净版）
+- `id`：`claude-eva-official`（明日香版）/ `claude-eva-official-clean`（纯净版）
 - 外观：`light`
 - 支持：ZCode（`apps.zcode.compat: true`）
 - 能力：`background` / `safe-css`
@@ -88,7 +88,7 @@ npx electron . --launch=zcode:claude-eva-official-clean
 
 ## 素材来源与权利声明
 
-背景图（`hero.webp`，女孩版）基于 Claude EVA 主题素材包为基底，经 AI 再生成，公开再分发 / 商用前请自行确认素材、肖像与商标权利。背景不代表 Anthropic / Claude 官方视觉或背书。纯净版背景为程序生成的渐变图，无第三方素材。
+背景图（`hero.webp`，明日香版）基于 Claude EVA 主题素材包为基底，经 AI 再生成，公开再分发 / 商用前请自行确认素材、肖像与商标权利。背景不代表 Anthropic / Claude 官方视觉或背书。纯净版背景为程序生成的渐变图，无第三方素材。
 
 ## 上游说明
 
