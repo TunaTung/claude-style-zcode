@@ -1,0 +1,238 @@
+/* ============================================================
+   Claude Eva Official — 按 Claude 官方色系美学(data-theme=claude
+   light 变量)重制。珊瑚橙 brand #D97757、蓝 accent #2E82DA、
+   暖白层级 bg-100~400、三级文字、暖灰细边、柔和阴影、180ms 过渡。
+   基调:优雅、舒适、可读。
+   ============================================================ */
+
+/* ---- ZCode 变量:Claude 暖白层级半透明 ----
+   兼得方案:整条遮挡链减透(win-alt 38% → main 22% → 面板 50%),
+   图在背景整体透出 ~24%(侧边栏 45%);文字区用玻璃衬底而非实白。 */
+:root {
+  --color-background: rgba(255, 255, 255, 0.5) !important;
+  --color-background-win-alt: rgba(250, 249, 245, 0.38) !important;
+  --color-background-alt: rgba(244, 241, 227, 0.4) !important;
+  --color-panel: rgba(250, 249, 245, 0.5) !important;
+  --color-card: rgba(255, 255, 255, 0.72) !important;
+  --color-input: rgba(255, 255, 255, 0.78) !important;
+  --color-popover: rgba(255, 255, 255, 0.97) !important;
+  --color-surface: rgba(250, 249, 245, 0.22) !important;
+  /* 边框与文字走 Claude 暖灰/暖黑 */
+  --color-border: rgba(211, 204, 190, 0.55) !important;
+}
+
+/* ---- 顶部栏:暖白 + 细边框 + 过渡 ---- */
+header {
+  background: rgba(250, 249, 245, 0.84) !important;
+  backdrop-filter: blur(14px) saturate(1.2) !important;
+  border-bottom: 1px solid rgba(211, 204, 190, 0.6) !important;
+  transition: background-color 180ms ease !important;
+}
+
+/* ---- 侧边栏:暖白毛玻璃(女孩图透出 45%),珊瑚右缘 ----
+   注意:通用兜底用 :is(#sidebar, aside) 的 id 特异性,主题
+   必须用 #sidebar 同级选择器并在后注入才能覆盖。 */
+#sidebar {
+  background: rgba(244, 241, 227, 0.55) !important;
+  backdrop-filter: blur(28px) saturate(1.35) !important;
+  border-right: 1px solid rgba(211, 204, 190, 0.6) !important;
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.5) !important;
+  transition: background-color 180ms ease !important;
+}
+
+/* 侧边栏条目 hover / 选中:珊瑚淡底 + 左指示条 */
+#sidebar a:hover,
+#sidebar [class*="hover"]:hover,
+#sidebar [data-active="true"],
+#sidebar [aria-selected="true"] {
+  background-color: rgba(217, 119, 87, 0.16) !important;
+  color: #C9633E !important;
+  transition: background-color 180ms ease, color 180ms ease !important;
+}
+
+/* ---- 输入区:与上边栏同色(header 84% 暖白)+ 珊瑚圆角框(伪元素)---- */
+.chat-composer-region.chat-composer-region {
+  background-color: rgba(250, 249, 245, 0.84) !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+.chat-composer-region.chat-composer-region::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(217, 119, 87, 0.55) !important;
+  pointer-events: none !important;
+}
+.chat-composer-region.chat-composer-region:focus-within::before {
+  border-color: #D97757 !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.12) !important;
+}
+/* 内层输入表面与外壳:透明,露出输入区的 header 色底
+   (双类提升特异性,压过通用兜底 0.88 染底) */
+.chat-composer-input-surface.chat-composer-input-surface,
+.chat-composer-region [class*="rounded-2xl"] {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ---- 消息气泡:全透明,文字直接落在渐变背景上(深字对比度足够)---- */
+[class*="message"][class*="message"] {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  border-radius: 12px !important;
+}
+[class*="bubble"], [class*="message-card"], [class*="thread"] > div {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  border-radius: 12px !important;
+}
+
+/* ---- 弹窗:纯白近实底 + 大圆角 + 柔和阴影 ---- */
+[role="dialog"] {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(211, 204, 190, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(33, 31, 28, 0.06), 0 16px 48px rgba(33, 31, 28, 0.14) !important;
+}
+
+/* ---- 强调按钮:珊瑚(Claude brand-200)---- */
+button[class*="bg-primary"], button[class*="bg-accent"] {
+  background-color: #D97757 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 2px rgba(201, 99, 62, 0.3) !important;
+  transition: background-color 180ms ease, transform 180ms ease !important;
+}
+button[class*="bg-primary"]:hover, button[class*="bg-accent"]:hover {
+  background-color: #C9633E !important;
+}
+
+/* ---- 链接/次要强调:Claude 蓝 accent ---- */
+a {
+  color: #2E82DA !important;
+  transition: color 180ms ease !important;
+}
+a:hover {
+  color: #1F6FCC !important;
+}
+
+/* ---- 代码块:bg-200 暖纸底 + 圆角 10 ---- */
+pre, [class*="code-block"] {
+  background-color: rgba(244, 241, 227, 0.92) !important;
+  color: #211F1C !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(211, 204, 190, 0.5) !important;
+}
+
+/* ---- 选中文本:珊瑚暖调 ---- */
+::selection {
+  background-color: rgba(217, 119, 87, 0.25) !important;
+}
+
+/* ---- 滚动条:暖灰细条(hover 珊瑚)---- */
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 158, 140, 0.45) !important;
+  border-radius: 8px !important;
+  transition: background-color 180ms ease !important;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(217, 119, 87, 0.55) !important;
+}
+
+/* ---- 文字层级:占位符/次级用 Claude 三级灰 ---- */
+.chat-composer-region [contenteditable="true"] {
+  background: transparent !important;
+  color: #211F1C !important;
+}
+.chat-composer-region [data-placeholder]::before {
+  color: #73716B !important;
+}
+[class*="text-muted"], [class*="text-secondary"], [class*="text-subtle"] {
+  color: #73716B !important;
+}
+
+/* ============================================================
+   小装饰(克制,Claude 色系:珊瑚主强调 + 蓝次强调)
+   ============================================================ */
+
+/* 任务行:珊瑚左指示条 + hover 微光 */
+#sidebar [class*="group/task-row"] {
+  position: relative !important;
+}
+#sidebar [class*="group/task-row"]::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 26%;
+  bottom: 26%;
+  width: 3px;
+  border-radius: 2px;
+  background: #D97757;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+#sidebar [class*="group/task-row"]:hover::before,
+#sidebar [class*="group/task-row"][data-active="true"]::before,
+#sidebar [class*="group/task-row"][aria-selected="true"]::before {
+  opacity: 1;
+}
+#sidebar [class*="group/task-row"]:hover {
+  background-color: rgba(217, 119, 87, 0.08) !important;
+}
+
+/* 选中任务行:深珊瑚文字 */
+#sidebar [class*="group/task-row"][data-active="true"],
+#sidebar [class*="group/task-row"][aria-selected="true"] {
+  background-color: rgba(217, 119, 87, 0.1) !important;
+  color: #C9633E !important;
+}
+
+/* 功能区按钮(自动化/技能/搜索):hover 蓝色(Claude accent) */
+#sidebar button[class*="group/button"] {
+  transition: background-color 180ms ease, color 180ms ease !important;
+}
+#sidebar button[class*="group/button"]:hover {
+  background-color: rgba(46, 130, 218, 0.09) !important;
+  color: #2E82DA !important;
+}
+
+/* 图标微交互:珊瑚 */
+#sidebar svg {
+  transition: color 180ms ease !important;
+}
+#sidebar [class*="group/task-row"]:hover svg {
+  color: #C9633E !important;
+}
+
+/* 顶部栏右侧图标 hover:蓝 */
+header svg {
+  transition: color 180ms ease !important;
+}
+header svg:hover {
+  color: #2E82DA !important;
+}
+
+/* ============================================================
+   安全微交互(一行级,无布局风险,2026-08-12)
+   ============================================================ */
+
+/* 任务行 hover:图标右移 2px */
+#sidebar [class*="group/task-row"]:hover svg {
+  transform: translateX(2px) !important;
+}
+
+/* 按钮按压反馈:轻微缩放 */
+#sidebar button:active, main button:active {
+  transform: scale(0.98) !important;
+}
+
+/* 气泡 hover:边框珊瑚微亮 */
+[class*="bubble"]:hover, [class*="message-card"]:hover {
+  border-color: rgba(217, 119, 87, 0.35) !important;
+}
+
+/* (键盘焦点态已移除:outline 是直角矩形,不随圆角,造成视觉突兀)

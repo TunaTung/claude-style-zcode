@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "claude-eva-official",
+  "name": "Claude Eva Official",
+  "author": "Tuna",
+  "hero": "hero.webp",
+  "colors": {
+    "accent": "#D97757",
+    "secondary": "#2E82DA",
+    "surface": "#FAF9F5",
+    "text": "#211F1C"
+  },
+  "apps": {
+    "zcode": {
+      "compat": true
+    }
+  }
+}
