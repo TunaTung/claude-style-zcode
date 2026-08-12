@@ -26,30 +26,48 @@
 
 ## 安装
 
-### 明日香版（根目录）
+> 主题放进 Dream Work Theme 的**用户主题目录**即可被识别。主题目录不会自动创建，需要手动新建 `themes` 文件夹。各平台位置见下表：
 
-1. 克隆本仓库（或只下载 `theme.json`、`theme.css`、`hero.webp` 三个文件，不要套多余目录）。
-2. 放入 Dream Work Theme 的主题目录：
+| 平台 | 用户主题目录（需手动新建 `themes` 文件夹） |
+| --- | --- |
+| **macOS** | `~/Library/Application Support/dream-work-theme/themes/` |
+| **Windows** | `%APPDATA%\dream-work-theme\themes\`（即 `C:\Users\<用户名>\AppData\Roaming\dream-work-theme\themes\`） |
+| **Linux** | `~/.config/dream-work-theme/themes/` |
 
-   ```
-   <dream-work-theme>/themes/claude-eva-official/
-   ├── theme.json
-   ├── theme.css
-   └── hero.webp
-   ```
+### 第一步：找到用户主题目录
 
-3. 启动注入：
+**macOS**（Finder 默认隐藏 `Library`，用下面的方法直达）：
 
-   ```bash
-   cd <dream-work-theme>
-   npx electron . --launch=zcode:claude-eva-official
-   ```
+1. 打开 Finder，按 `Cmd + Shift + G`（前往文件夹）
+2. 粘贴并回车：`~/Library/Application Support/dream-work-theme/`
+3. 在该目录下手动新建 `themes` 文件夹
 
-### 纯净版（clean/）
+**Windows**：文件资源管理器地址栏粘贴 `%APPDATA%\dream-work-theme\`，回车后新建 `themes` 文件夹。
 
-把 `clean/` 目录整体复制为 `<dream-work-theme>/themes/claude-eva-official-clean/`，然后：
+### 第二步：放入主题
+
+**明日香版**：把 `theme.json`、`theme.css`、`hero.webp` 三个文件放进
+
+```
+.../dream-work-theme/themes/claude-eva-official/
+```
+
+**纯净版**：把本仓库 `clean/` 目录里的三个文件放进
+
+```
+.../dream-work-theme/themes/claude-eva-official-clean/
+```
+
+> 目录结构必须是 `themes/<主题名>/theme.json` 这样的层级，不要把文件直接散在 `themes/` 下，也不要套多余一层。
+
+### 第三步：启动注入
 
 ```bash
+# 明日香版
+cd <dream-work-theme 项目目录>
+npx electron . --launch=zcode:claude-eva-official
+
+# 纯净版
 npx electron . --launch=zcode:claude-eva-official-clean
 ```
 
