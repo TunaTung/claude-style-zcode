@@ -9,7 +9,13 @@
 | **Claude Eva Official**（明日香版） | 根目录 | 动漫少女背景 + 透明消息，氛围感强 |
 | **Claude Eva Clean**（纯净版） | `clean/` | 细腻暖色渐变背景 + 透明消息，更克制 |
 
-![明日香版实际界面预览](docs/preview.png)
+**纯净版（Claude Eva Clean）效果：**
+
+![纯净版实际界面预览](docs/clean.png)
+
+**明日香版（Claude Eva Official）效果：**
+
+![明日香版实际界面预览](docs/asuka.png)
 
 > 预览图为真实 ZCode 界面截图（浅色模式），仅作展示。
 
@@ -60,7 +66,8 @@ npx electron . --launch=zcode:claude-eva-official-clean
 │   ├── theme.json
 │   ├── theme.css
 │   └── hero.webp
-└── docs/preview.png # 实际界面预览截图
+├── docs/clean.png     # 纯净版效果图
+└── docs/asuka.png     # 明日香版效果图
 ```
 
 ## 主题信息
