@@ -79,8 +79,17 @@ header {
   backdrop-filter: none !important;
 }
 
-/* ---- 消息气泡:全透明,文字直接落在渐变背景上(深字对比度足够)---- */
-[class*="message"][class*="message"] {
+/* ---- 消息容器:全透明无模糊,文字直接落在背景图上 ---- */
+[class*="history-message"][class*="history-message"] {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  border-radius: 12px !important;
+}
+[class*="group/user-row"], [class*="group/assistant-row"] {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+[class*="group/user-row"] > *, [class*="group/assistant-row"] > * {
   background-color: transparent !important;
   backdrop-filter: none !important;
   border-radius: 12px !important;
@@ -90,6 +99,8 @@ header {
   backdrop-filter: none !important;
   border-radius: 12px !important;
 }
+
+
 
 /* ---- 弹窗:纯白近实底 + 大圆角 + 柔和阴影 ---- */
 [role="dialog"] {
