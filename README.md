@@ -121,6 +121,10 @@ themes/
 - ZCode 属于 generic-work 应用：上游 v1.2.0 起支持注入主题自带 `theme.css`（`readThemeCss`）并修复 file:// 页面 blob 背景，本主题的全部组件级样式因此开箱即用。
 - 早期版本（< v1.2.0）对 generic 应用只注入自动生成的通用兜底皮肤，不读取 `theme.css`，仅能得到基础四色配色。
 
+## 贡献者
+
+- [@diobaland-droid](https://github.com/diobaland-droid) —— 感谢提交 [polish PR](https://github.com/TunaTung/claude-style-zcode/pull/1)：输入框圆角对齐、右键/二级菜单暖白毛玻璃、`/` 命令菜单面板、发送/停止按钮珊瑚化，均已合并（代码字号部分因避免覆盖用户自定义字号设置而移除）。期待你的暗色版主题！
+
 ## 许可
 
 本主题包代码与声明文件采用 [MIT License](LICENSE)。背景图素材按上方的权利声明处理，请自行确认再分发权利。
