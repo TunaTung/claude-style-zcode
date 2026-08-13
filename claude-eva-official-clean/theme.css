@@ -56,6 +56,7 @@ header {
   border: none !important;
   box-shadow: none !important;
   position: relative !important;
+  border-radius: 12px !important;
 }
 .chat-composer-region.chat-composer-region::before {
   content: '' !important;
@@ -100,6 +101,46 @@ header {
   box-shadow: 0 2px 8px rgba(33, 31, 28, 0.06), 0 16px 48px rgba(33, 31, 28, 0.14) !important;
 }
 
+/* ---- 右键/二级菜单(Radix DropdownMenu):暖白毛玻璃,统一顶栏色系 ---- */
+[role="menu"], [data-radix-menu-content] {
+  background-color: rgba(250, 249, 245, 0.97) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+  border: 1px solid rgba(211, 204, 190, 0.6) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(33, 31, 28, 0.08), 0 16px 48px rgba(33, 31, 28, 0.16) !important;
+  color: #211F1C !important;
+}
+[role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"] {
+  color: #211F1C !important;
+  border-radius: 8px !important;
+}
+[role="menuitem"]:hover, [role="menuitemcheckbox"]:hover, [role="menuitemradio"]:hover,
+[role="menuitem"][data-highlighted], [role="menuitemcheckbox"][data-highlighted],
+[role="menuitemradio"][data-highlighted] {
+  background-color: rgba(217, 119, 87, 0.14) !important;
+  color: #C9633E !important;
+}
+[role="separator"], [data-radix-menu-separator] {
+  background-color: rgba(211, 204, 190, 0.5) !important;
+}
+[role="tooltip"] {
+  background-color: rgba(250, 249, 245, 0.97) !important;
+  border: 1px solid rgba(211, 204, 190, 0.5) !important;
+  border-radius: 8px !important;
+  color: #211F1C !important;
+}
+
+/* ---- 输入框 / 命令菜单(listbox):暖白面板,避免与消息内容重叠 ---- */
+.chat-composer-region [role="listbox"] {
+  background-color: rgba(250, 249, 245, 0.97) !important;
+  border-radius: 12px !important;
+}
+.chat-composer-region [role="listbox"] [role="option"][data-highlighted],
+.chat-composer-region [role="listbox"] [role="option"]:hover {
+  background-color: rgba(217, 119, 87, 0.14) !important;
+  color: #C9633E !important;
+}
+
 /* ---- 强调按钮:珊瑚(Claude brand-200)---- */
 button[class*="bg-primary"], button[class*="bg-accent"] {
   background-color: #D97757 !important;
@@ -108,6 +149,24 @@ button[class*="bg-primary"], button[class*="bg-accent"] {
   transition: background-color 180ms ease, transform 180ms ease !important;
 }
 button[class*="bg-primary"]:hover, button[class*="bg-accent"]:hover {
+  background-color: #C9633E !important;
+}
+
+/* ---- 发送/停止按钮:珊瑚底 + 白图标(输入框右下角)---- */
+.chat-composer-region button[aria-label="停止生成"],
+.chat-composer-region button[aria-label="停止"],
+.chat-composer-region button[aria-label="发送"],
+.chat-composer-region button[aria-label="发送消息"],
+.chat-composer-region button:has(> svg rect) {
+  background-color: #D97757 !important;
+  color: #FFFFFF !important;
+  border-color: #D97757 !important;
+}
+.chat-composer-region button[aria-label="停止生成"]:hover,
+.chat-composer-region button[aria-label="停止"]:hover,
+.chat-composer-region button[aria-label="发送"]:hover,
+.chat-composer-region button[aria-label="发送消息"]:hover,
+.chat-composer-region button:has(> svg rect):hover {
   background-color: #C9633E !important;
 }
 
@@ -236,3 +295,13 @@ header svg:hover {
 }
 
 /* (键盘焦点态已移除:outline 是直角矩形,不随圆角,造成视觉突兀)
+
+/* ============================================================
+   ZCode 代码串字体定制:喜鹊宋体简繁版
+   (用户指定:仅改代码字体,文本字体保持默认不变)
+   ============================================================ */
+pre, code, kbd, samp,
+[class*="language-"], .hljs, [class*="token"],
+.monaco-editor, .monaco-editor * {
+  font-family: "喜鹊宋体简繁版", Consolas, "Microsoft YaHei", monospace !important;
+}
