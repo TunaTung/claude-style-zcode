@@ -305,13 +305,3 @@ pre, code, kbd, samp,
 .monaco-editor, .monaco-editor * {
   font-family: "喜鹊宋体简繁版", Consolas, "Microsoft YaHei", monospace !important;
 }
-/* 代码字号加大:行内 14px,代码块 15px(喜鹊宋体笔划密,视觉偏小) */
-pre {
-  font-size: 15px !important;
-}
-code, kbd, samp {
-  font-size: 14px !important;
-}
-pre code {
-  font-size: 15px !important;
-}
