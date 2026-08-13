@@ -2,12 +2,12 @@
 
 给 [Dream Work Theme](https://github.com/xxxhh336/dream-work-theme) 用的 ZCode 浅色主题包：Claude 官方色系（珊瑚橙 + 品牌蓝 + 暖白层级）。非 Anthropic 官方产品，不修改官方安装包 / `app.asar` / WindowsApps。
 
-包含两个版本：
+包含两个版本，仓库里是**解压即用的主题文件夹**，直接整个复制进 `themes/` 即可：
 
-| 版本 | 目录 | 特点 |
+| 版本 | 主题文件夹 | 特点 |
 | --- | --- | --- |
-| **Claude Eva Official**（明日香版） | 根目录 | 动漫少女背景 + 透明消息，氛围感强 |
-| **Claude Eva Clean**（纯净版） | `clean/` | 细腻暖色渐变背景 + 透明消息，更克制 |
+| **Claude Eva Official**（明日香版） | `claude-eva-official/` | 动漫少女背景 + 透明消息，氛围感强 |
+| **Claude Eva Clean**（纯净版） | `claude-eva-official-clean/` | 细腻暖色渐变背景 + 透明消息，更克制 |
 
 **纯净版（Claude Eva Clean）效果：**
 
@@ -28,43 +28,39 @@
 
 ## 安装
 
-> 主题放进 Dream Work Theme 的**用户主题目录**即可被识别。主题目录不会自动创建，需要手动新建 `themes` 文件夹。各平台位置见下表：
-
-| 平台 | 用户主题目录（需手动新建 `themes` 文件夹） |
-| --- | --- |
-| **macOS** | `~/Library/Application Support/dream-work-theme/themes/` |
-| **Windows** | `%APPDATA%\dream-work-theme\themes\`（即 `C:\Users\<用户名>\AppData\Roaming\dream-work-theme\themes\`） |
-| **Linux** | `~/.config/dream-work-theme/themes/` |
-
 ### 第一步：安装 Dream Work Theme（v1.2.0+）
 
 到上游 [Dream Work Theme Releases](https://github.com/xxxhh336/dream-work-theme/releases) 下载 v1.2.0 及以上版本安装包（Windows 选 `Dream-Work-Theme-*-win-x64.exe`）。
 
-### 第二步：找到用户主题目录
+### 第二步：下载主题 ZIP
 
-**macOS**（Finder 默认隐藏 `Library`，用下面的方法直达）：
+点本仓库右上角 **Code → Download ZIP**，解压后得到 `claude-style-zcode-main/`，里面有两个主题文件夹：`claude-eva-official/` 和 `claude-eva-official-clean/`。
 
-1. 打开 Finder，按 `Cmd + Shift + G`（前往文件夹）
-2. 粘贴并回车：`~/Library/Application Support/dream-work-theme/`
-3. 在该目录下手动新建 `themes` 文件夹
+### 第三步：复制进主题目录
 
-**Windows**：文件资源管理器地址栏粘贴 `%APPDATA%\dream-work-theme\`，回车后新建 `themes` 文件夹。
+打开 Dream Work Theme 的**用户主题目录**（目录不会自动创建，先手动新建 `themes` 文件夹）：
 
-### 第三步：放入主题
+| 平台 | 用户主题目录 |
+| --- | --- |
+| **macOS** | `~/Library/Application Support/dream-work-theme/themes/`（Finder 按 `Cmd+Shift+G` 直达） |
+| **Windows** | `%APPDATA%\dream-work-theme\themes\`（即 `C:\Users\<用户名>\AppData\Roaming\dream-work-theme\themes\`，资源管理器地址栏粘贴后回车） |
+| **Linux** | `~/.config/dream-work-theme/themes/` |
 
-**明日香版**：把 `theme.json`、`theme.css`、`hero.webp` 三个文件放进
-
-```
-.../dream-work-theme/themes/claude-eva-official/
-```
-
-**纯净版**：把本仓库 `clean/` 目录里的三个文件放进
+把解压出来的 **两个主题文件夹整个复制** 进 `themes/`，最终结构是：
 
 ```
-.../dream-work-theme/themes/claude-eva-official-clean/
+themes/
+├── claude-eva-official/
+│   ├── theme.json
+│   ├── theme.css
+│   └── hero.webp
+└── claude-eva-official-clean/
+    ├── theme.json
+    ├── theme.css
+    └── hero.webp
 ```
 
-> 目录结构必须是 `themes/<主题名>/theme.json` 这样的层级，不要把文件直接散在 `themes/` 下，也不要套多余一层。
+> 目录层级必须是 `themes/<主题名>/theme.json` 这样，不要把 `theme.json` 散在 `themes/` 下，也不要套多余一层文件夹。
 
 ### 第四步：启动注入
 
@@ -73,21 +69,23 @@
 3. 选择主题 `claude-eva-official`（明日香版）或 `claude-eva-official-clean`（纯净版）
 4. 点击「应用主题」
 
-> 也可以直接下载主题包 zip 解压后放入 `themes/`，效果相同。
-
 ## 文件结构
 
 ```
 .
-├── theme.json       # 明日香版主题声明（Claude 色系 palette）
-├── theme.css        # 明日香版组件级样式（composer / message / sidebar / 微交互）
-├── hero.webp        # 明日香版背景图（动漫少女，2848×1600）
-├── clean/           # 纯净版（渐变背景）
+├── claude-eva-official/       # 明日香版（动漫少女背景）
+│   ├── theme.json             # 主题声明（Claude 色系 palette）
+│   ├── theme.css              # 组件级样式（composer / message / sidebar / 微交互）
+│   └── hero.webp              # 背景图（2848×1600）
+├── claude-eva-official-clean/ # 纯净版（渐变背景）
 │   ├── theme.json
 │   ├── theme.css
 │   └── hero.webp
-├── docs/clean.png     # 纯净版效果图
-└── docs/asuka.png     # 明日香版效果图
+├── docs/
+│   ├── clean.png              # 纯净版效果图
+│   └── asuka.png              # 明日香版效果图
+├── LICENSE
+└── README.md
 ```
 
 ## 主题信息
