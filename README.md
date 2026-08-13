@@ -53,11 +53,13 @@ themes/
 ├── claude-eva-official/
 │   ├── theme.json
 │   ├── theme.css
-│   └── hero.webp
+│   ├── hero.webp
+│   └── fonts/                  # Anthropic 官方字体（woff2 原始文件）
 └── claude-eva-official-clean/
     ├── theme.json
     ├── theme.css
-    └── hero.webp
+    ├── hero.webp
+    └── fonts/
 ```
 
 > 目录层级必须是 `themes/<主题名>/theme.json` 这样，不要把 `theme.json` 散在 `themes/` 下，也不要套多余一层文件夹。
@@ -75,12 +77,14 @@ themes/
 .
 ├── claude-eva-official/       # 明日香版（动漫少女背景）
 │   ├── theme.json             # 主题声明（Claude 色系 palette）
-│   ├── theme.css              # 组件级样式（composer / message / sidebar / 微交互）
-│   └── hero.webp              # 背景图（2848×1600）
+│   ├── theme.css              # 组件级样式 + 字体（@font-face 内嵌 base64）
+│   ├── hero.webp              # 背景图（2848×1600）
+│   └── fonts/                 # Anthropic 官方 woff2（Sans / Serif / Mono × Roman/Italic）
 ├── claude-eva-official-clean/ # 纯净版（渐变背景）
 │   ├── theme.json
 │   ├── theme.css
-│   └── hero.webp
+│   ├── hero.webp
+│   └── fonts/
 ├── docs/
 │   ├── clean.png              # 纯净版效果图
 │   └── asuka.png              # 明日香版效果图
@@ -111,9 +115,23 @@ themes/
 - 侧边栏：任务行珊瑚左指示条、hover 微光、功能区按钮蓝色 hover
 - 微交互：图标位移 2px / 按钮按压 0.98 / 气泡 hover 珊瑚边
 
+### 字体（Claude 官方 Anthropic Sans / Serif / Mono）
+
+| 用途 | 字体 | 回退 |
+| --- | --- | --- |
+| 正文 / 消息 / 输入区 | **Anthropic Sans** | 微软雅黑 / PingFang SC / system-ui |
+| 标题（h1–h5） | **Anthropic Serif** | 微软雅黑 / PingFang SC / serif |
+| 代码 / 编辑器 | **Anthropic Mono**（拉丁）+ **Sarasa Mono SC**（中文） | 微软雅黑 / Consolas / monospace |
+
+- 字体文件来自 Anthropic 官网 CDN 发布的正体（`www.anthropic.com` 页面字体，六文件：Sans / Serif / Mono × Roman / Italic），版权归 Anthropic，仅限个人使用，公开再分发 / 商用前请自行确认授权。
+- 官方字体仅含拉丁字形，**中文自动回退**到微软雅黑等系统字体；代码块中文另嵌 **更纱黑体 Sarasa Mono SC** 子集（SIL OFL 1.1 开源，GB2312 一级常用字 + 标点，生僻字回退系统字体），代码区中文字形成套等宽。未改动任何字号设置。
+- 实现说明：`dream-work-theme` 把 `theme.css` 当字符串注入页面，相对路径 `url()` 无法解析，因此 `@font-face` 以 **base64 data URI 内嵌**在 `theme.css` 中（与 hero 背景图同一机制）；`fonts/` 目录保留原始 woff2 供进阶使用（如系统级安装）。若主题文件超过注入体积上限，可删掉 `fonts/` 目录减轻体积（data URI 已内置，不影响渲染）。
+
 ## 素材来源与权利声明
 
 背景图（`hero.webp`，明日香版）基于 Claude EVA 主题素材包为基底，经 AI 再生成，公开再分发 / 商用前请自行确认素材、肖像与商标权利。背景不代表 Anthropic / Claude 官方视觉或背书。纯净版背景为程序生成的渐变图，无第三方素材。
+
+字体（`fonts/` 与 `theme.css` 内嵌）为 **Anthropic 私有字体**，版权归 Anthropic 所有；本仓库仅作个人学习 / 自用打包，**未获授权不得公开再分发或商用**，请参照 [Anthropic 官方字体发布说明](https://www.anthropic.com/news/meet-the-fonts)。代码块中文使用的**更纱黑体 Sarasa Mono SC**（子集化）为 [SIL OFL 1.1](https://github.com/be5invis/Sarasa-Gothic/blob/master/LICENSE) 开源字体，可自由再分发，其版权归原作者 Renzhi Li 与 Adobe/Google 等贡献方。
 
 ## 上游说明
 
@@ -127,4 +145,4 @@ themes/
 
 ## 许可
 
-本主题包代码与声明文件采用 [MIT License](LICENSE)。背景图素材按上方的权利声明处理，请自行确认再分发权利。
+本主题包代码与声明文件采用 [MIT License](LICENSE)。背景图素材按上方的权利声明处理，请自行确认再分发权利。**字体文件为 Anthropic 私有版权**，不属于 MIT 许可范围，请按上方「素材来源与权利声明」处理。
