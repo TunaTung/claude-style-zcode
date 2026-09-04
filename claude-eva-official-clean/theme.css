@@ -180,19 +180,21 @@ header {
   border-radius: 12px !important;
 }
 
-/* ---- 弹窗:纯白近实底 + 大圆角 + 柔和阴影 ---- */
+/* ---- 弹窗:纯白近实底 + 大圆角 + 柔和阴影 ----
+   同样不加 backdrop-filter(dialog 内若有 fixed 浮层会被污染定位)。 */
 [role="dialog"] {
   background-color: rgba(255, 255, 255, 0.97) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
   border-radius: 14px !important;
   border: 1px solid rgba(211, 204, 190, 0.7) !important;
   box-shadow: 0 2px 8px rgba(33, 31, 28, 0.06), 0 16px 48px rgba(33, 31, 28, 0.14) !important;
 }
 
-/* ---- 右键/二级菜单(Radix DropdownMenu):暖白毛玻璃,统一顶栏色系 ---- */
+/* ---- 右键/二级菜单(Radix DropdownMenu):暖白毛玻璃,统一顶栏色系 ----
+   注意:这里不能加 backdrop-filter。Radix 子菜单用 fixed 定位,若父级
+   [role="menu"] 带 backdrop-filter 会成为 fixed 后代的 containing block,
+   导致二级菜单(hover provider 后弹出的模型列表)定位错乱、点不到。 */
 [role="menu"], [data-radix-menu-content] {
   background-color: rgba(250, 249, 245, 0.97) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
   border: 1px solid rgba(211, 204, 190, 0.6) !important;
   border-radius: 12px !important;
   box-shadow: 0 2px 8px rgba(33, 31, 28, 0.08), 0 16px 48px rgba(33, 31, 28, 0.16) !important;
